@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Portal - Magic Carpet School</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <img src="logo.jpg" alt="Magic Carpet School Logo" class="logo-img">
+                    <span>Magic Carpet School</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="branches.html">Branches</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="portal.html" class="active">Parent Portal</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="fade-in">Parent Portal</h1>
+            <p class="fade-in">Access Your Child's Academic Information</p>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section class="portal-auth" id="authSection">
+        <div class="container">
+            <div class="auth-intro">
+                <h2>Welcome to MCS Parent Portal</h2>
+                <p>Access your child's grades, attendance, and academic reports</p>
+            </div>
+
+            <div class="auth-forms-container">
+                <!-- Login Form -->
+                <div class="auth-box" id="loginBox">
+                    <div class="auth-icon">🔐</div>
+                    <h2>Login to Your Account</h2>
+                    <p class="auth-subtitle">Enter your credentials to access the parent portal</p>
+                    <form id="loginForm" class="auth-form">
+                        <div class="form-group">
+                            <label for="loginEmail">📧 Email Address *</label>
+                            <input type="email" id="loginEmail" name="email" required placeholder="parent@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">� Password *</label>
+                            <input type="password" id="loginPassword" name="password" required placeholder="Enter your password">
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="remember">
+                                <span>Remember me</span>
+                            </label>
+                            <a href="#" class="forgot-link">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span>Login Now</span>
+                            <span class="btn-arrow">→</span>
+                        </button>
+                    </form>
+                    <div class="portal-info">
+                        <h4>Need Access?</h4>
+                        <p>Contact the school administration at <strong>011 663 6605</strong> or visit our office to get your parent portal credentials.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section (Hidden by default) -->
+    <section class="portal-dashboard hidden" id="dashboardSection">
+        <div class="container">
+            <div class="dashboard-header">
+                <div class="welcome-message">
+                    <h2>Welcome, <span id="parentName">Parent</span>!</h2>
+                    <p>View your child's academic progress and grades</p>
+                </div>
+                <button class="logout-btn" id="logoutBtn">Logout</button>
+            </div>
+
+            <div class="student-info-card">
+                <div class="student-avatar">
+                    <img src="logo.jpg" alt="Student">
+                </div>
+                <div class="student-details">
+                    <h3 id="studentName">Student Name</h3>
+                    <p><strong>Student ID:</strong> <span id="displayStudentId">MCS-2024-001</span></p>
+                    <p><strong>Grade:</strong> <span id="studentGrade">Grade 10</span></p>
+                    <p><strong>Branch:</strong> <span id="studentBranch">Addis Ababa</span></p>
+                </div>
+            </div>
+
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" data-tab="grades">Grades</button>
+                <button class="tab-btn" data-tab="attendance">Attendance</button>
+                <button class="tab-btn" data-tab="reports">Reports</button>
+            </div>
+
+            <!-- Grades Tab -->
+            <div class="tab-content active" id="gradesTab">
+                <h3>Current Semester Grades</h3>
+                <div class="grades-grid">
+                    <div class="grade-card">
+                        <div class="subject-icon">📐</div>
+                        <h4>Mathematics</h4>
+                        <div class="grade-info">
+                            <span class="grade-score">92%</span>
+                            <span class="grade-letter">A</span>
+                        </div>
+                        <div class="grade-progress">
+                            <div class="progress-bar" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="subject-icon">🔬</div>
+                        <h4>Physics</h4>
+                        <div class="grade-info">
+                            <span class="grade-score">88%</span>
+                            <span class="grade-letter">B+</span>
+                        </div>
+                        <div class="grade-progress">
+                            <div class="progress-bar" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="subject-icon">⚗️</div>
+                        <h4>Chemistry</h4>
+                        <div class="grade-info">
+                            <span class="grade-score">85%</span>
+                            <span class="grade-letter">B</span>
+                        </div>
+                        <div class="grade-progress">
+                            <div class="progress-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="subject-icon">🧬</div>
+                        <h4>Biology</h4>
+                        <div class="grade-info">
+                            <span class="grade-score">90%</span>
+                            <span class="grade-letter">A-</span>
+                        </div>
+                        <div class="grade-progress">
+                            <div class="progress-bar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="subject-icon">📖</div>
+                        <h4>English</h4>
+                        <div class="grade-info">
+                            <span class="grade-score">87%</span>
+                            <span class="grade-letter">B+</span>
+                        </div>
+                        <div class="grade-progress">
+                            <div class="progress-bar" style="width: 87%"></div>
+                        </div>
+                    </div>
+                    <div class="grade-card">
+                        <div class="subject-icon">🌍</div>
+                        <h4>Geography</h4>
+                        <div class="grade-info">
+                            <span class="grade-score">91%</span>
+                            <span class="grade-letter">A</span>
+                        </div>
+                        <div class="grade-progress">
+                            <div class="progress-bar" style="width: 91%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overall-performance">
+                    <h3>Overall Performance</h3>
+                    <div class="performance-stats">
+                        <div class="stat-box">
+                            <h4>GPA</h4>
+                            <p class="stat-value">3.8</p>
+                        </div>
+                        <div class="stat-box">
+                            <h4>Class Rank</h4>
+                            <p class="stat-value">5th</p>
+                        </div>
+                        <div class="stat-box">
+                            <h4>Total Credits</h4>
+                            <p class="stat-value">24</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attendance Tab -->
+            <div class="tab-content" id="attendanceTab">
+                <h3>Attendance Record</h3>
+                <div class="attendance-summary">
+                    <div class="attendance-stat">
+                        <h4>Present Days</h4>
+                        <p class="stat-number">142</p>
+                    </div>
+                    <div class="attendance-stat">
+                        <h4>Absent Days</h4>
+                        <p class="stat-number">3</p>
+                    </div>
+                    <div class="attendance-stat">
+                        <h4>Attendance Rate</h4>
+                        <p class="stat-number">97.9%</p>
+                    </div>
+                </div>
+                <div class="attendance-details">
+                    <h4>Recent Attendance</h4>
+                    <table class="attendance-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Nov 18, 2024</td>
+                                <td><span class="status-badge present">Present</span></td>
+                                <td>On time</td>
+                            </tr>
+                            <tr>
+                                <td>Nov 17, 2024</td>
+                                <td><span class="status-badge present">Present</span></td>
+                                <td>On time</td>
+                            </tr>
+                            <tr>
+                                <td>Nov 16, 2024</td>
+                                <td><span class="status-badge absent">Absent</span></td>
+                                <td>Sick leave</td>
+                            </tr>
+                            <tr>
+                                <td>Nov 15, 2024</td>
+                                <td><span class="status-badge present">Present</span></td>
+                                <td>On time</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Reports Tab -->
+            <div class="tab-content" id="reportsTab">
+                <h3>Academic Reports</h3>
+                <div class="reports-list">
+                    <div class="report-item">
+                        <div class="report-icon">📄</div>
+                        <div class="report-info">
+                            <h4>First Semester Report Card</h4>
+                            <p>Academic Year 2024/2025</p>
+                        </div>
+                        <button class="download-btn">Download PDF</button>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-icon">📊</div>
+                        <div class="report-info">
+                            <h4>Mid-Term Progress Report</h4>
+                            <p>October 2024</p>
+                        </div>
+                        <button class="download-btn">Download PDF</button>
+                    </div>
+                    <div class="report-item">
+                        <div class="report-icon">📈</div>
+                        <div class="report-info">
+                            <h4>Teacher Comments</h4>
+                            <p>Latest feedback from teachers</p>
+                        </div>
+                        <button class="download-btn">View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="logo.jpg" alt="MCS Logo" class="footer-logo">
+                    <h3>Magic Carpet School</h3>
+                    <p>Empowering minds, building futures</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="branches.html">Branches</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📞 011 663 6605</p>
+                    <p>📱 <a href="https://t.me/Mgc_all" target="_blank">@Mgc_all</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Magic Carpet School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="portal.js"></script>
+</body>
+</html>

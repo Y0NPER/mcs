@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration - Magic Carpet School</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <img src="logo.jpg" alt="Magic Carpet School Logo" class="logo-img">
+                    <span>Magic Carpet School</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="branches.html">Branches</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="register.html" class="active">Register</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="fade-in">Student Registration</h1>
+            <p class="fade-in">Join the Magic Carpet School Family</p>
+        </div>
+    </section>
+
+    <!-- Registration Steps -->
+    <section class="registration-intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Online Registration System</h2>
+                <p>Complete your child's registration in simple steps. All information is secure and encrypted.</p>
+                <div class="registration-steps">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h3>Create Account</h3>
+                        <p>Set up your parent account</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h3>Fill Information</h3>
+                        <p>Complete student & parent details</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h3>Upload Documents</h3>
+                        <p>Submit required documents</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <h3>Pay Fees</h3>
+                        <p>Complete registration payment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form Container -->
+    <section class="registration-form-section" id="registrationSection">
+        <div class="container">
+            <!-- Login/Create Account Toggle -->
+            <div class="account-toggle">
+                <button class="toggle-btn active" id="loginToggle">Login to Existing Account</button>
+                <button class="toggle-btn" id="createToggle">Create New Account</button>
+            </div>
+
+            <!-- Login Form -->
+            <div class="registration-form-container" id="loginContainer">
+                <div class="form-header">
+                    <h2>Login to Your Account</h2>
+                    <p>Access your registration dashboard</p>
+                </div>
+                <form id="loginForm" class="registration-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="loginEmail">📧 Email Address *</label>
+                            <input type="email" id="loginEmail" name="email" required placeholder="parent@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">🔒 Password *</label>
+                            <input type="password" id="loginPassword" name="password" required placeholder="Enter your password">
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Login to Dashboard</button>
+                </form>
+            </div>
+
+            <!-- Create Account Form -->
+            <div class="registration-form-container hidden" id="createContainer">
+                <div class="form-header">
+                    <h2>Create Parent Account</h2>
+                    <p>First, create your account to start the registration process</p>
+                </div>
+                <form id="createAccountForm" class="registration-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="parentName">👤 Full Name *</label>
+                            <input type="text" id="parentName" name="parentName" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="parentEmail">📧 Email Address *</label>
+                            <input type="email" id="parentEmail" name="parentEmail" required placeholder="parent@example.com">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="parentPhone">📱 Phone Number *</label>
+                            <input type="tel" id="parentPhone" name="parentPhone" required placeholder="+251 912 345 678">
+                        </div>
+                        <div class="form-group">
+                            <label for="accountPassword">🔒 Create Password *</label>
+                            <input type="password" id="accountPassword" name="password" required placeholder="Create strong password" minlength="6">
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Create Account & Continue</button>
+                </form>
+            </div>
+
+            <!-- Registration Dashboard (Hidden by default) -->
+            <div class="registration-dashboard hidden" id="registrationDashboard">
+                <div class="dashboard-header">
+                    <h2>Registration Dashboard</h2>
+                    <p>Complete your child's registration</p>
+                    <button class="logout-btn" id="regLogoutBtn">Logout</button>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <div class="progress-step active" data-step="1">Student Info</div>
+                        <div class="progress-step" data-step="2">Parent Info</div>
+                        <div class="progress-step" data-step="3">Documents</div>
+                        <div class="progress-step" data-step="4">Payment</div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Student Information -->
+                <div class="registration-step active" id="step1">
+                    <div class="step-header">
+                        <h3>Step 1: Student Information</h3>
+                        <p>Please provide complete information about the student</p>
+                    </div>
+                    <form id="studentInfoForm" class="registration-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentName">👤 Student Full Name *</label>
+                                <input type="text" id="studentName" name="studentName" required placeholder="Enter student's full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="studentDOB">📅 Date of Birth *</label>
+                                <input type="date" id="studentDOB" name="studentDOB" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentAge">🎂 Age</label>
+                                <input type="number" id="studentAge" name="studentAge" readonly placeholder="Auto-calculated">
+                            </div>
+                            <div class="form-group">
+                                <label for="studentGender">⚧ Gender *</label>
+                                <select id="studentGender" name="studentGender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nationalId">🆔 National ID / Birth Certificate Number *</label>
+                                <input type="text" id="nationalId" name="nationalId" required placeholder="Enter ID number">
+                            </div>
+                            <div class="form-group">
+                                <label for="studentPhone">📱 Student Contact (Optional)</label>
+                                <input type="tel" id="studentPhone" name="studentPhone" placeholder="Student's phone number">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="previousSchool">🏫 Previous School Name *</label>
+                                <input type="text" id="previousSchool" name="previousSchool" required placeholder="Enter previous school name">
+                            </div>
+                            <div class="form-group">
+                                <label for="previousGrade">📚 Previous Grade Level *</label>
+                                <select id="previousGrade" name="previousGrade" required>
+                                    <option value="">Select Previous Grade</option>
+                                    <option value="none">No Previous School (New Student)</option>
+                                    <option value="kg">Kindergarten</option>
+                                    <option value="1">Grade 1</option>
+                                    <option value="2">Grade 2</option>
+                                    <option value="3">Grade 3</option>
+                                    <option value="4">Grade 4</option>
+                                    <option value="5">Grade 5</option>
+                                    <option value="6">Grade 6</option>
+                                    <option value="7">Grade 7</option>
+                                    <option value="8">Grade 8</option>
+                                    <option value="9">Grade 9</option>
+                                    <option value="10">Grade 10</option>
+                                    <option value="11">Grade 11</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="requestedGrade">🎯 Requested Grade Level *</label>
+                                <select id="requestedGrade" name="requestedGrade" required>
+                                    <option value="">Select Requested Grade</option>
+                                    <option value="kg">Kindergarten</option>
+                                    <option value="1">Grade 1</option>
+                                    <option value="2">Grade 2</option>
+                                    <option value="3">Grade 3</option>
+                                    <option value="4">Grade 4</option>
+                                    <option value="5">Grade 5</option>
+                                    <option value="6">Grade 6</option>
+                                    <option value="7">Grade 7</option>
+                                    <option value="8">Grade 8</option>
+                                    <option value="9">Grade 9</option>
+                                    <option value="10">Grade 10</option>
+                                    <option value="11">Grade 11</option>
+                                    <option value="12">Grade 12</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="preferredBranch">🏢 Preferred Branch *</label>
+                                <select id="preferredBranch" name="preferredBranch" required>
+                                    <option value="">Select Branch</option>
+                                    <option value="addis">Addis Ababa Branch</option>
+                                    <option value="mekele">Mekele Branch</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentAddress">🏠 Full Home Address *</label>
+                            <textarea id="studentAddress" name="studentAddress" required placeholder="Enter complete home address" rows="3"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="next-btn" onclick="nextStep(2)">Next: Parent Information →</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Step 2: Parent/Guardian Information -->
+                <div class="registration-step" id="step2">
+                    <div class="step-header">
+                        <h3>Step 2: Parent/Guardian Information</h3>
+                        <p>Provide information for at least one parent or guardian</p>
+                    </div>
+                    <form id="parentInfoForm" class="registration-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guardianName">👤 Guardian Full Name *</label>
+                                <input type="text" id="guardianName" name="guardianName" required placeholder="Enter guardian's full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="relationship">👨‍👩‍👧‍👦 Relationship to Student *</label>
+                                <select id="relationship" name="relationship" required>
+                                    <option value="">Select Relationship</option>
+                                    <option value="father">Father</option>
+                                    <option value="mother">Mother</option>
+                                    <option value="guardian">Legal Guardian</option>
+                                    <option value="grandparent">Grandparent</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guardianId">🆔 Guardian National ID *</label>
+                                <input type="text" id="guardianId" name="guardianId" required placeholder="Enter guardian's national ID">
+                            </div>
+                            <div class="form-group">
+                                <label for="guardianPhone">📱 Guardian Phone Number *</label>
+                                <input type="tel" id="guardianPhone" name="guardianPhone" required placeholder="+251 912 345 678">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guardianEmail">📧 Guardian Email Address *</label>
+                                <input type="email" id="guardianEmail" name="guardianEmail" required placeholder="guardian@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="emergencyContact">🚨 Emergency Contact Name *</label>
+                                <input type="text" id="emergencyContact" name="emergencyContact" required placeholder="Emergency contact name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="emergencyPhone">📞 Emergency Contact Phone *</label>
+                                <input type="tel" id="emergencyPhone" name="emergencyPhone" required placeholder="+251 911 123 456">
+                            </div>
+                            <div class="form-group">
+                                <label for="guardianOccupation">💼 Guardian Occupation</label>
+                                <input type="text" id="guardianOccupation" name="guardianOccupation" placeholder="Enter occupation">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="guardianAddress">🏠 Guardian Address (if different from student)</label>
+                            <textarea id="guardianAddress" name="guardianAddress" placeholder="Leave blank if same as student address" rows="3"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="prev-btn" onclick="prevStep(1)">← Previous</button>
+                            <button type="button" class="next-btn" onclick="nextStep(3)">Next: Documents →</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Step 3: Document Uploads -->
+                <div class="registration-step" id="step3">
+                    <div class="step-header">
+                        <h3>Step 3: Document Uploads</h3>
+                        <p>Upload required documents (PDF, JPG, PNG formats accepted)</p>
+                    </div>
+                    <form id="documentsForm" class="registration-form">
+                        <div class="documents-grid">
+                            <div class="document-upload">
+                                <label for="studentIdDoc">🆔 Student National ID / Birth Certificate *</label>
+                                <input type="file" id="studentIdDoc" name="studentIdDoc" accept=".pdf,.jpg,.jpeg,.png" required>
+                                <div class="file-info">Max size: 5MB</div>
+                            </div>
+                            <div class="document-upload">
+                                <label for="guardianIdDoc">🆔 Guardian National ID *</label>
+                                <input type="file" id="guardianIdDoc" name="guardianIdDoc" accept=".pdf,.jpg,.jpeg,.png" required>
+                                <div class="file-info">Max size: 5MB</div>
+                            </div>
+                            <div class="document-upload">
+                                <label for="transcriptDoc">📜 Previous School Report/Transcript *</label>
+                                <input type="file" id="transcriptDoc" name="transcriptDoc" accept=".pdf,.jpg,.jpeg,.png" required>
+                                <div class="file-info">Max size: 5MB</div>
+                            </div>
+                            <div class="document-upload">
+                                <label for="studentPhoto">📸 Student Photo (Passport Style) *</label>
+                                <input type="file" id="studentPhoto" name="studentPhoto" accept=".jpg,.jpeg,.png" required>
+                                <div class="file-info">Max size: 2MB</div>
+                            </div>
+                            <div class="document-upload">
+                                <label for="addressProof">🏠 Proof of Address *</label>
+                                <input type="file" id="addressProof" name="addressProof" accept=".pdf,.jpg,.jpeg,.png" required>
+                                <div class="file-info">Utility bill or rental agreement</div>
+                            </div>
+                            <div class="document-upload">
+                                <label for="medicalRecord">💉 Vaccination/Medical Record</label>
+                                <input type="file" id="medicalRecord" name="medicalRecord" accept=".pdf,.jpg,.jpeg,.png">
+                                <div class="file-info">Optional but recommended</div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="prev-btn" onclick="prevStep(2)">← Previous</button>
+                            <button type="button" class="next-btn" onclick="nextStep(4)">Next: Payment →</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Step 4: Fee & Payment -->
+                <div class="registration-step" id="step4">
+                    <div class="step-header">
+                        <h3>Step 4: Registration Fee & Payment</h3>
+                        <p>Complete your registration by paying the required fees</p>
+                    </div>
+                    <div class="payment-section">
+                        <div class="fee-breakdown">
+                            <h4>Fee Breakdown</h4>
+                            <div class="grade-fee-info">
+                                <div class="selected-grade">
+                                    <span>Selected Grade:</span>
+                                    <span id="selectedGradeDisplay">Please select grade in Step 1</span>
+                                </div>
+                            </div>
+                            <div class="fee-item">
+                                <span>Registration Fee</span>
+                                <span>500 ETB</span>
+                            </div>
+                            <div class="fee-item">
+                                <span>Processing Fee</span>
+                                <span>200 ETB</span>
+                            </div>
+                            <div class="fee-item">
+                                <span id="termFeeLabel">Term Fee</span>
+                                <span id="termFeeAmount">0 ETB</span>
+                            </div>
+                            <div class="fee-total">
+                                <span>Total Amount</span>
+                                <span id="totalAmount">700 ETB</span>
+                            </div>
+                            <div class="fee-note">
+                                <p><strong>Fee Structure:</strong></p>
+                                <ul>
+                                    <li>🎨 Kindergarten: 1,000 ETB per term</li>
+                                    <li>📚 Elementary (Grades 1-8): 2,300 ETB per term</li>
+                                    <li>🎓 High School (Grades 9-12): 3,200 ETB per term</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <h4>Payment Options</h4>
+                            <div class="payment-options">
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="card">
+                                    <span>💳 Credit/Debit Card</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="mobile">
+                                    <span>📱 Mobile Money (M-Birr, HelloCash)</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="bank">
+                                    <span>🏦 Bank Transfer</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="manual">
+                                    <span>📄 Manual Payment (Upload Receipt)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="payment-form" id="paymentForm">
+                            <div class="form-group">
+                                <label for="paymentProof">📄 Upload Payment Receipt (if manual payment)</label>
+                                <input type="file" id="paymentProof" name="paymentProof" accept=".pdf,.jpg,.jpeg,.png">
+                            </div>
+                        </div>
+
+                        <div class="legal-agreements">
+                            <h4>Legal Agreements & Consent</h4>
+                            <div class="agreement-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="termsConditions" required>
+                                    <span>I agree to the <a href="#" target="_blank">Terms & Conditions</a> *</span>
+                                </label>
+                            </div>
+                            <div class="agreement-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="dataPrivacy" required>
+                                    <span>I agree to the <a href="#" target="_blank">Data Privacy Policy</a> *</span>
+                                </label>
+                            </div>
+                            <div class="agreement-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="medicalCare" required>
+                                    <span>I give permission for emergency medical care if needed *</span>
+                                </label>
+                            </div>
+                            <div class="agreement-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="transport">
+                                    <span>I give permission for school transport (optional)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="prev-btn" onclick="prevStep(3)">← Previous</button>
+                            <button type="button" class="submit-registration-btn" onclick="submitRegistration()">Complete Registration</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Success Modal -->
+    <div class="modal hidden" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">✅</div>
+            <h2>Registration Successful!</h2>
+            <p>Your application has been submitted successfully. You will receive a confirmation email shortly.</p>
+            <div class="application-id">
+                <strong>Application ID: <span id="applicationId">MCS-2024-001</span></strong>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-primary" onclick="downloadReceipt()">Download Receipt</button>
+                <button class="btn-secondary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="logo.jpg" alt="MCS Logo" class="footer-logo">
+                    <h3>Magic Carpet School</h3>
+                    <p>Empowering minds, building futures</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="branches.html">Branches</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📞 011 663 6605</p>
+                    <p>📱 <a href="https://t.me/Mgc_all" target="_blank">@Mgc_all</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Magic Carpet School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="register.js"></script>
+</body>
+</html>

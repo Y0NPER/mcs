@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Magic Carpet School</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .admin-header {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .applications-table {
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            overflow-x: auto;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .table th,
+        .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            color: #cccccc;
+        }
+        
+        .table th {
+            background: rgba(255, 215, 0, 0.1);
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        
+        .status-submitted { background: rgba(255, 215, 0, 0.2); color: #ffd700; }
+        .status-accepted { background: rgba(0, 255, 0, 0.2); color: #00ff00; }
+        .status-rejected { background: rgba(255, 0, 0, 0.2); color: #ff6b6b; }
+        .status-draft { background: rgba(128, 128, 128, 0.2); color: #999; }
+        
+        .action-btn {
+            padding: 8px 15px;
+            margin: 2px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-accept { background: #00ff00; color: #000; }
+        .btn-reject { background: #ff6b6b; color: #fff; }
+        .btn-view { background: #ffd700; color: #000; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <img src="logo.jpg" alt="Magic Carpet School Logo" class="logo-img">
+                    <span>MCS Admin Panel</span>
+                </div>
+                <div class="admin-nav">
+                    <button class="logout-btn" id="adminLogout">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="admin-container" style="margin-top: 100px;">
+        <!-- Login Form (shown initially) -->
+        <div class="admin-login" id="adminLogin">
+            <div class="registration-form-container">
+                <div class="form-header">
+                    <h2>Admin Login</h2>
+                    <p>Access the registration management system</p>
+                </div>
+                <form id="adminLoginForm" class="registration-form">
+                    <div class="form-group">
+                        <label for="adminUsername">👤 Username</label>
+                        <input type="text" id="adminUsername" name="username" required placeholder="admin">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPassword">🔒 Password</label>
+                        <input type="password" id="adminPassword" name="password" required placeholder="admin123">
+                    </div>
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard (hidden initially) -->
+        <div class="admin-dashboard hidden" id="adminDashboard">
+            <div class="admin-header">
+                <h1>Registration Management Dashboard</h1>
+                <p>Manage student applications and registrations</p>
+            </div>
+
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <h3 id="totalApplications">0</h3>
+                    <p>Total Applications</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="pendingApplications">0</h3>
+                    <p>Pending Review</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="acceptedApplications">0</h3>
+                    <p>Accepted</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="rejectedApplications">0</h3>
+                    <p>Rejected</p>
+                </div>
+            </div>
+
+            <div class="applications-table">
+                <h2>Student Applications</h2>
+                <div class="table-controls">
+                    <select id="statusFilter">
+                        <option value="">All Applications</option>
+                        <option value="submitted">Submitted</option>
+                        <option value="under_review">Under Review</option>
+                        <option value="accepted">Accepted</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                    <button class="btn-primary" onclick="exportApplications()">Export to Excel</button>
+                </div>
+                
+                <table class="table" id="applicationsTable">
+                    <thead>
+                        <tr>
+                            <th>Application ID</th>
+                            <th>Student Name</th>
+                            <th>Grade</th>
+                            <th>Branch</th>
+                            <th>Parent</th>
+                            <th>Status</th>
+                            <th>Submitted</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applicationsTableBody">
+                        <!-- Applications will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Details Modal -->
+    <div class="modal hidden" id="applicationModal">
+        <div class="modal-content" style="max-width: 800px;">
+            <h2>Application Details</h2>
+            <div id="applicationDetails">
+                <!-- Details will be loaded here -->
+            </div>
+            <div class="modal-actions">
+                <button class="btn-accept" onclick="updateApplicationStatus('accepted')">Accept</button>
+                <button class="btn-reject" onclick="updateApplicationStatus('rejected')">Reject</button>
+                <button class="btn-secondary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

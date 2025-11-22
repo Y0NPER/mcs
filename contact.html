@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Magic Carpet School</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <img src="logo.jpg" alt="Magic Carpet School Logo" class="logo-img">
+                    <span>Magic Carpet School</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="branches.html">Branches</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="fade-in">Get In Touch</h1>
+            <p class="fade-in">We're here to answer your questions</p>
+        </div>
+    </section>
+
+    <section class="contact-main">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form-section">
+                    <h2>Send Us a Message</h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="branch">Preferred Branch</label>
+                            <select id="branch" name="branch">
+                                <option value="">Select a branch</option>
+                                <option value="addis">Addis Ababa</option>
+                                <option value="mekele">Mekele</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info-section">
+                    <h2>Contact Information</h2>
+                    <div class="contact-card">
+                        <div class="contact-icon">📞</div>
+                        <h3>Phone</h3>
+                        <p><a href="tel:0116636605">011 663 6605</a></p>
+                        <p class="contact-note">Available during school hours</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📱</div>
+                        <h3>Telegram</h3>
+                        <p><a href="https://t.me/Mgc_all" target="_blank">@Mgc_all</a></p>
+                        <p class="contact-note">Join our official channel</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🕐</div>
+                        <h3>Office Hours</h3>
+                        <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                        <p>Saturday: 9:00 AM - 1:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="locations-section">
+        <div class="container">
+            <h2 class="section-title">Our Locations</h2>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <div class="location-header">
+                        <img src="logo.jpg" alt="Addis Ababa">
+                        <h3>Addis Ababa Branch</h3>
+                    </div>
+                    <div class="location-details">
+                        <p><strong>📍 Address:</strong></p>
+                        <p>Yeka Subcity, Woreda 08</p>
+                        <p>Addis Ababa, Ethiopia</p>
+                        <p><strong>📞 Phone:</strong> 011 663 6605</p>
+                        <a href="contact.html" class="location-btn">Get Directions</a>
+                    </div>
+                </div>
+                <div class="location-card">
+                    <div class="location-header">
+                        <img src="logo.jpg" alt="Mekele">
+                        <h3>Mekele Branch</h3>
+                    </div>
+                    <div class="location-details">
+                        <p><strong>📍 Address:</strong></p>
+                        <p>FFH5+CWP, Mekele</p>
+                        <p>Tigray Region, Ethiopia</p>
+                        <p><strong>📞 Phone:</strong> 011 663 6605</p>
+                        <a href="contact.html" class="location-btn">Get Directions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What grades do you offer?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer complete education from Kindergarten (KG) through Grade 12 at both our Addis Ababa and Mekele branches.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can I enroll my child?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can contact us via phone at 011 663 6605 or visit either of our branches. Our admissions team will guide you through the enrollment process.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is your student-teacher ratio?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We maintain small class sizes to ensure personalized attention for each student, with an average ratio that allows for effective learning.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you offer extracurricular activities?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer various extracurricular activities including sports, arts, music, drama, science clubs, and more to support holistic development.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I schedule a campus visit?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We encourage parents to visit our campuses. Please call us at 011 663 6605 to schedule a tour.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Join MCS?</h2>
+            <p>Take the first step towards your child's bright future</p>
+            <div class="cta-buttons">
+                <a href="tel:0116636605" class="cta-button-large">Call Now</a>
+                <a href="https://t.me/Mgc_all" target="_blank" class="cta-button-outline-light">Join Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="logo.jpg" alt="MCS Logo" class="footer-logo">
+                    <h3>Magic Carpet School</h3>
+                    <p>Empowering minds, building futures</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="branches.html">Branches</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📞 011 663 6605</p>
+                    <p>📱 <a href="https://t.me/Mgc_all" target="_blank">@Mgc_all</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Magic Carpet School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
